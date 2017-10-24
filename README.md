@@ -1,18 +1,17 @@
 # Ockham.Test
-A small set of framework-agnostic unit testing utilities. 
-
-> Ockham.Net uses Xunit for unit testing, including the unit tests of this 
-> library, but the utilities themselves are framework agnostic and have no dependencies.
+A small set of framework-agnostic unit testing utilities. Part of the [Ockham.Net](https://github.com/joshua-honig/ockham.net) project.
   
 ## The Problem
-Every Ockham component should solve a clear problem that is not solved in the .Net BCL, or in the particular libraries it is meant to augment. 
+> Every Ockham component should solve a clear problem that is not solved in the .Net BCL, or in the particular libraries it is meant to augment. 
 
-The utilities in this library address two simple problems encountered when unit testing: Testing exception properties and testing non-public methods.
+The utilities in this library address two simple problems encountered when unit testing: 
+  - Testing exception properties 
+  - Testing non-public methods
 
 ### 1. `Assert.Throws`: Testing exception messages against patterns, arbitrary exception properties ###
 All major .Net unit testing frameworks provide simple, semantic mechanisms for testing for expected exceptions
 of a particular type. They do not provide means of testing the contents of the exception message, or other 
-properties on the exception. The overloads of Ockham.Test.Assert.Throws provide mechanisms for doing one or both of these things.
+properties on the exception. The overloads of `Ockham.Test.Assert.Throws` provide mechanisms for doing one or both of these things.
 
 The point here is that the content of error messages and / or additional information attached to an exception
 represent testable requirements in and of themselves. Such requirements can be tested by hand:
@@ -68,8 +67,7 @@ implementation details irrelevant to the testable public surface area of your co
 
 Except when they are not. Like when you want to compose the public surface area from 
 several important but private / protected / internal components. A good example is the private static 
-_To method in the Ockham.Convert class. It provides a single, consolidated logic for fast but 
-flexible basic data type conversions, but its full signature is not meant to be public. Instead, 
+\_To method in the [`Ockham.Data.Convert`](https://github.com/joshua-honig/ockham.net.data/blob/master/src/src/Convert/Convert_Core.cs) class, defined in the [Ockham.Data](https://github.com/joshua-honig/ockham.net.data) module. It provides a single, consolidated logic for fast but flexible basic data type conversions, but its full signature is not meant to be public. Instead, 
 a wide range of public methods expose different variations of the underlying conversion logic. 
 That project includes a wide array of tests on those public conversion APIs, but it ALSO include
 lots of tests to ensure that this single crucial method works exactly as intended. 
