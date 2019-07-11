@@ -1,5 +1,5 @@
 # Ockham.Test
-A small set of framework-agnostic unit testing utilities. Part of the [Ockham.Net](https://github.com/joshua-honig/ockham.net) project.
+A small set of framework-agnostic unit testing utilities. Part of the [Ockham.Net](https://github.com/mallowfields/ockham.net) project.
   
 ## The Problem
 > Every Ockham component should solve a clear problem that is not solved in the .Net BCL, or in the particular libraries it is meant to augment. 
